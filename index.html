@@ -25,7 +25,7 @@ form{max-width:620px;margin:24px auto;text-align:left;background:#fffdf8;padding
 <section id="contacto" class="contact" aria-labelledby="contact-title">
 <h2 id="contact-title">Contame tu idea</h2>
 <p>Completá tus datos y, si querés, adjuntá un archivo. Tu consulta nos llegará por correo.</p>
-<div id="send-success" role="status" hidden style="max-width:620px;margin:24px auto;padding:28px;background:#e4f5eb;border:1px solid #98cbb0;border-radius:22px"><h3 style="margin-top:0">¡Gracias por tu consulta!</h3><p>El servicio confirmó el envío de tu pedido. Te responderemos al correo que indicaste.</p><a class="send-button" href="./#contacto">Enviar otra consulta</a></div>
+<div id="send-success" role="status" hidden style="max-width:620px;margin:24px auto;padding:28px;background:#e4f5eb;border:1px solid #98cbb0;border-radius:22px"><h3 style="margin-top:0">¡Gracias por tu consulta!</h3><p>El servicio confirmó el envío de tu pedido. Te responderemos al correo que indicaste.</p><button class="send-button" id="new-request" type="button">Enviar otra consulta</button></div>
 <form id="contact-form" action="https://formsubmit.co/patagoniatec@gmail.com" method="POST" enctype="multipart/form-data">
 <label for="customer-name">1. Nombre y apellido</label><input id="customer-name" name="Nombre" autocomplete="name" maxlength="120" required>
 <label for="customer-email">2. Tu correo electrónico</label><input id="customer-email" type="email" name="email" autocomplete="email" maxlength="254" required placeholder="Para poder responderte">
@@ -97,6 +97,22 @@ const selected=service.selectedOptions[0];
 selected.value=selected.textContent;
 setTimeout(()=>{selected.value=originalValue;},0);
 status.textContent='Enviando tu consulta y el archivo adjunto. Al finalizar volverás al Kiosco Digital.';
+});
+
+document.getElementById('new-request').addEventListener('click',()=>{
+form.reset();
+attachment.setCustomValidity('');
+status.textContent='';
+status.dataset.state='';
+document.getElementById('send-success').hidden=true;
+form.hidden=false;
+document.getElementById('contact-title').textContent='Contame tu idea';
+const button=document.getElementById('send-request');
+button.disabled=false;
+button.textContent='Enviar consulta';
+history.replaceState(null,'',window.location.pathname+'#contacto');
+form.scrollIntoView({behavior:'auto',block:'start'});
+document.getElementById('customer-name').focus({preventScroll:true});
 });
 
 if(new URLSearchParams(window.location.search).get('enviado')==='1'){
