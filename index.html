@@ -25,18 +25,16 @@
 </div></section>
 <section class="closing"><div><h2>Traé la idea. Le damos forma.</h2><p>Una referencia, un boceto o unas palabras alcanzan para empezar.</p></div><button class="cta" data-contact>Hablemos de tu proyecto <span aria-hidden="true">↗</span></button></section>
 </main>
-<footer><strong>kiosco digital</strong><span>Diseño gráfico · 3D · Web · Documentos</span></footer>
-<dialog id="contact" aria-labelledby="contact-title"><button class="close" aria-label="Cerrar consulta" id="close">×</button><h2 id="contact-title">Contanos tu idea</h2><p class="intro" style="font-size:14px">Prepará tu consulta para copiarla y compartirla. El canal de contacto estará disponible próximamente.</p><form id="request"><label for="name">Tu nombre</label><input id="name" autocomplete="name" required maxlength="100"><label for="idea">¿Qué te gustaría crear?</label><textarea id="idea" required maxlength="3000" placeholder="Contanos qué necesitás, las medidas o el formato y para cuándo…"></textarea><button class="cta" type="submit">Copiar mi consulta <span aria-hidden="true">↗</span></button><p id="status" role="status"></p></form></dialog>
+<footer><strong>kiosco digital</strong><span><a href="https://wa.me/5492984881253" target="_blank" rel="noopener noreferrer">WhatsApp: 298 4881253</a> · <a href="mailto:patagoniatec@gmail.com">patagoniatec@gmail.com</a></span></footer>
+<dialog id="contact" aria-labelledby="contact-title"><button class="close" aria-label="Cerrar consulta" id="close">×</button><h2 id="contact-title">Contanos tu idea</h2><p class="intro" style="font-size:14px">Contanos qué necesitás y abrí tu consulta en WhatsApp. También podés escribirnos por correo.</p><form id="request"><label for="name">Tu nombre</label><input id="name" autocomplete="name" required maxlength="100"><label for="idea">¿Qué te gustaría crear?</label><textarea id="idea" required maxlength="3000" placeholder="Contanos qué necesitás, las medidas o el formato y para cuándo…"></textarea><button class="cta" type="submit">Consultar por WhatsApp <span aria-hidden="true">↗</span></button><p><a href="mailto:patagoniatec@gmail.com">Escribir a patagoniatec@gmail.com</a></p><p id="status" role="status"></p></form></dialog>
 <script>
 const modal=document.getElementById('contact');
 document.querySelectorAll('[data-contact]').forEach(button=>button.addEventListener('click',()=>modal.showModal()));
 document.getElementById('close').addEventListener('click',()=>modal.close());
-document.getElementById('request').addEventListener('submit',async event=>{
+document.getElementById('request').addEventListener('submit',event=>{
 event.preventDefault();
 const message='Hola, soy '+document.getElementById('name').value.trim()+'. Quería consultar por lo siguiente:\n'+document.getElementById('idea').value.trim();
-const status=document.getElementById('status');
-try{await navigator.clipboard.writeText(message);status.textContent='Consulta copiada. Todavía no se envió: podés pegarla en el canal que uses para contactarnos.'}
-catch(error){status.textContent='Podés seleccionar y copiar tu consulta: '+message;}
+window.location.href='https://wa.me/5492984881253?text='+encodeURIComponent(message);
 });
 </script>
 </body>
