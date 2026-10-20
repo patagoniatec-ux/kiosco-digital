@@ -33,6 +33,7 @@ form{max-width:620px;margin:24px auto;text-align:left;background:#fffdf8;padding
 <label for="customer-idea">4. Contanos tu idea y para cuándo la necesitás</label><textarea id="customer-idea" name="Consulta" required maxlength="5000" rows="5" placeholder="Detalles, medidas, cantidades, textos y fecha aproximada…"></textarea>
 <label for="customer-file">5. Adjuntar archivo (opcional)</label><input id="customer-file" type="file" name="attachment" accept="image/*,.pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-describedby="file-help"><p id="file-help" class="hint">Podés adjuntar una imagen, un PDF o un Word (.doc o .docx), de hasta 10 MB. Para enviar varios archivos, podés hacer otra consulta.</p>
 <div class="trap" aria-hidden="true"><label for="website">Dejá este campo vacío</label><input id="website" name="_honey" tabindex="-1" autocomplete="off"></div>
+<input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_next" value="https://patagoniatec-ux.github.io/kiosco-digital/?enviado=1#contacto">
 <input type="hidden" name="_subject" value="Nueva consulta · Kiosco Digital"><input type="hidden" name="_template" value="table">
 <button class="send-button" type="submit" id="send-request">Enviar consulta</button>
