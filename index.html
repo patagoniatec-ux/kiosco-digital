@@ -11,6 +11,8 @@ form{max-width:620px;margin:24px auto;text-align:left;background:#fffdf8;padding
 .file-contacts{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:24px 38px;margin:26px 0 0}.file-contact{display:flex;align-items:center;gap:12px;text-align:left;margin:0;min-width:0}.file-contact small{display:block;font-size:13px;line-height:1.5;color:#526659}.file-contact strong{display:block;font-size:clamp(16px,2.2vw,22px);line-height:1.6;user-select:text;overflow-wrap:anywhere}.contact-icon{display:grid;place-items:center;flex:0 0 45px;width:45px;height:45px;border-radius:50%;font-size:25px}.email-icon{background:#dceff8}.whatsapp-icon{background:#d6f3e2;color:#07834b}.contact-icon svg{width:29px;height:29px}@media(max-width:560px){.file-contacts{flex-direction:column;align-items:flex-start;max-width:330px;margin:26px auto 0}}
 .poster>img.brand-mark{position:absolute;left:2.6%;top:0;width:13%;height:auto;background:#fffaf1;pointer-events:none}
 .whatsapp-contact{color:inherit;text-decoration:none}.whatsapp-contact:hover strong{text-decoration:underline}.whatsapp-contact:focus-visible{outline:3px solid #087d49;outline-offset:6px;border-radius:8px}
+
+.large-files{margin:18px 0 24px;padding:18px;background:#edf5fa;border:1px solid #cadce7;border-radius:14px}.upload-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;max-width:100%;padding:13px 18px;border:1px solid #0b5680;border-radius:30px;background:#fff;color:#083b59;font:700 16px Arial,Helvetica,sans-serif;text-decoration:none}.upload-button:hover{background:#dcecf5}.upload-button svg{width:23px;height:23px;flex-shrink:0}.large-files .hint{font-size:13px;line-height:1.6;margin-top:12px}
 </style>
 </head>
 <body>
@@ -34,7 +36,8 @@ form{max-width:620px;margin:24px auto;text-align:left;background:#fffdf8;padding
 <label for="customer-email">2. Tu correo electrónico</label><input id="customer-email" type="email" name="email" autocomplete="email" maxlength="254" required placeholder="Para poder responderte">
 <label for="customer-service">3. ¿Qué necesitás?</label><select id="customer-service" name="Servicio" required><option value="">Elegí un servicio</option value="graphic">Afiches, invitaciones y carruseles</option><option value="model">Diseño y archivos 3D</option><option value="web">Pequeños sitios web</option><option value="docs">Documentos personalizados</option><option value="print">Impresión en papel o 3D</option><option value="other">Otra consulta</option></select>
 <label for="customer-idea">4. Contanos tu idea y para cuándo la necesitás</label><textarea id="customer-idea" name="Consulta" required maxlength="5000" rows="5" placeholder="Detalles, medidas, cantidades, textos y fecha aproximada…"></textarea>
-<label for="customer-file">5. Adjuntar archivo (opcional)</label><input id="customer-file" type="file" name="attachment" aria-describedby="file-help"><p id="file-help" class="hint">Podés adjuntar archivos de diseño, CAD y 3D (STL, DWG, DXF, STEP, OBJ, 3MF), imágenes, PDF, documentos, planillas, ZIP u otros formatos, de hasta 10 MB. Para reunir varios archivos, podés adjuntar un ZIP. Si pesa más, incluí un enlace de descarga en tu consulta.</p>
+<label for="customer-file">5. Adjuntar archivo (opcional)</label><input id="customer-file" type="file" name="attachment" aria-describedby="file-help"><p id="file-help" class="hint">Podés adjuntar archivos de diseño, CAD y 3D (STL, DWG, DXF, STEP, OBJ, 3MF), imágenes, PDF, documentos, planillas, ZIP u otros formatos, de hasta 10 MB. Para reunir varios archivos, podés adjuntar un ZIP. Si pesa más, usá el botón «Enviar archivos grandes».</p>
+<div class="large-files"><a class="upload-button" href="https://www.dropbox.com/request/a6kbumiqwxm0sqhy4bbn" target="_blank" rel="noopener noreferrer" aria-describedby="large-file-help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"/></svg>Enviar archivos grandes<span class="sr-only"> (abre Dropbox en otra pestaña)</span></a><p id="large-file-help" class="hint">Se abre Dropbox para subir tu archivo. No necesitás una cuenta. Usá el mismo nombre y correo que en esta consulta y después volvé para enviarla.</p></div>
 <div class="trap" aria-hidden="true"><label for="website">Dejá este campo vacío</label><input id="website" name="_honey" tabindex="-1" autocomplete="off"></div>
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_next" value="https://patagoniatec-ux.github.io/kiosco-digital/?enviado=1#contacto">
@@ -83,7 +86,7 @@ function validateAttachment(){
 const file=attachment.files[0];
 let message='';
 if(file){
-if(file.size>10*1024*1024)message='El archivo supera los 10 MB. Elegí uno más liviano.';
+if(file.size>10*1024*1024)message='El archivo supera los 10 MB. Quitalo del adjunto y usá el botón «Enviar archivos grandes». Después volvé para enviar tu consulta.';
 
 }
 attachment.setCustomValidity(message);
