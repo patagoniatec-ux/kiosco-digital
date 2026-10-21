@@ -33,7 +33,7 @@ form{max-width:620px;margin:24px auto;text-align:left;background:#fffdf8;padding
 <label for="customer-email">2. Tu correo electrónico</label><input id="customer-email" type="email" name="email" autocomplete="email" maxlength="254" required placeholder="Para poder responderte">
 <label for="customer-service">3. ¿Qué necesitás?</label><select id="customer-service" name="Servicio" required><option value="">Elegí un servicio</option value="graphic">Afiches, invitaciones y carruseles</option><option value="model">Diseño y archivos 3D</option><option value="web">Pequeños sitios web</option><option value="docs">Documentos personalizados</option><option value="print">Impresión en papel o 3D</option><option value="other">Otra consulta</option></select>
 <label for="customer-idea">4. Contanos tu idea y para cuándo la necesitás</label><textarea id="customer-idea" name="Consulta" required maxlength="5000" rows="5" placeholder="Detalles, medidas, cantidades, textos y fecha aproximada…"></textarea>
-<label for="customer-file">5. Adjuntar archivo (opcional)</label><input id="customer-file" type="file" name="attachment" accept="image/*,.pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-describedby="file-help"><p id="file-help" class="hint">Podés adjuntar una imagen, un PDF o un Word (.doc o .docx), de hasta 10 MB. Para enviar varios archivos, podés hacer otra consulta.</p>
+<label for="customer-file">5. Adjuntar archivo (opcional)</label><input id="customer-file" type="file" name="attachment" aria-describedby="file-help"><p id="file-help" class="hint">Podés adjuntar archivos de diseño, CAD y 3D (STL, DWG, DXF, STEP, OBJ, 3MF), imágenes, PDF, documentos, planillas, ZIP u otros formatos, de hasta 10 MB. Para reunir varios archivos, podés adjuntar un ZIP. Si pesa más, incluí un enlace de descarga en tu consulta.</p>
 <div class="trap" aria-hidden="true"><label for="website">Dejá este campo vacío</label><input id="website" name="_honey" tabindex="-1" autocomplete="off"></div>
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_next" value="https://patagoniatec-ux.github.io/kiosco-digital/?enviado=1#contacto">
@@ -83,7 +83,7 @@ const file=attachment.files[0];
 let message='';
 if(file){
 if(file.size>10*1024*1024)message='El archivo supera los 10 MB. Elegí uno más liviano.';
-else if(!file.type.startsWith('image/') && !/\.(pdf|doc|docx)$/i.test(file.name))message='Elegí una imagen, un PDF o un Word (.doc o .docx).';
+
 }
 attachment.setCustomValidity(message);
 status.textContent=message;status.dataset.state=message?'error':'';
